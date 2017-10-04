@@ -19,24 +19,24 @@ def hello(): # Name of the method
     rv = cur.fetchall() #Retreive all rows returend by the SQL statment
     return str(rv)      #Return the data in a string format
 
-@app.route("/add")
-def add() :
+@app.route("/add/<username>/<email>")
+def add(username , email) :
 	cur = mysql.connection.cursor()
-	cur.execute('''INSERT INTO students (studentName, email) values ("Another One","another@mydit.ie")''')
+	cur.execute('''INSERT INTO students (studentName, email) values ('%s','%s')''' % (username, email)) 
 	cur.execute('commit;')
 	return 'added :)'
 
-@app.route("/update")
-def update() :
+@app.route("/update/<name1>/<name2>")
+def update(name1, name2) :
         cur = mysql.connection.cursor()
-        cur.execute('''UPDATE students SET studentName = "Steve" WHERE studentName LIKE "Another One"''')
+        cur.execute('''UPDATE students SET studentName = '%s'  WHERE studentName LIKE '%s' ''' % (name1 , name2))
         cur.execute('commit;')
         return 'All Hail King Steve'
 
-@app.route("/delete")
-def delete() :
+@app.route("/delete/<name>")
+def delete(name) :
 	cur = mysql.connection.cursor()
-	cur.execute('DELETE from students WHERE studentName LIKE "Steve"')
+	cur.execute('''DELETE from students WHERE studentName LIKE '%s' ''' % (name))
 	cur.execute('commit;')
 	return 'RIP STEVE'
 
