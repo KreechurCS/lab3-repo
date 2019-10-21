@@ -42,5 +42,5 @@ systemd-python==233
 ufw==0.35
 unattended-upgrades==0.1
 urllib3==1.22
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 yarg==0.1.9
