@@ -14,7 +14,7 @@ Flask-MySQLdb==0.2.0
 google-compute-engine==2.4.1
 idna==2.6
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 jsonpatch==1.10
 jsonpointer==1.10
 keyring==10.3.1
